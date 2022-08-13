@@ -108,7 +108,7 @@ const UserForm = () => {
                     </label>
                 </div>
 
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center mb-8 space-x-6">
                     <div className="shrink-0">
                         <img
                             className="object-cover w-16 h-16 rounded-full"
@@ -129,7 +129,9 @@ const UserForm = () => {
                         />
                     </label>
                 </div>
-                <Button type="submit">অংশগ্রহণ করুন</Button>
+                <div className="flex justify-center">
+                    <Button type="submit">অংশগ্রহণ করুন</Button>
+                </div>
             </form>
 
             <div className="flex items-center justify-center my-10 space-x-10">

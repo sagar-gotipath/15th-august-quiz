@@ -23,63 +23,61 @@ const Video = ({ src }) => {
         });
     }, []);
     return (
-        <div className="flex items-center">
-            <CenterWrapper>
-                <img
-                    src="/assets/images/mujib.png"
-                    alt="mujib logo"
-                    className="block w-24 mx-auto mb-12"
-                />
-                <h2 className="mb-10 text-2xl text-center">
-                    সম্পূর্ণ ভিডিওটি দেখে কুইজ শুরু করুন
-                </h2>
-                <div className="w-full max-w-2xl lg:w-[650px] rounded-md overflow-hidden">
-                    <div
-                        className="!rounded-lg plyr__video-embed"
-                        id="player"
-                        ref={videoPlayerRef}
-                        data-plyr-provider="youtube"
-                        controls
-                        data-plyr-embed-id="hS5CfP8n_js"
-                        style={{}}
-                    >
-                        <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/hS5CfP8n_js"
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="autoplay;"
-                            allowFullScreen
-                            resetonend="true"
-                        ></iframe>
-                    </div>
+        <CenterWrapper>
+            <img
+                src="/assets/images/mujib.png"
+                alt="mujib logo"
+                className="block w-24 mx-auto mb-10"
+            />
+            <h2 className="mb-10 text-2xl text-center">
+                সম্পূর্ণ ভিডিওটি দেখে কুইজ শুরু করুন
+            </h2>
+            <div className="w-full max-w-2xl lg:w-[650px] rounded-md overflow-hidden mx-auto">
+                <div
+                    className="!rounded-lg plyr__video-embed"
+                    id="player"
+                    ref={videoPlayerRef}
+                    data-plyr-provider="youtube"
+                    controls
+                    data-plyr-embed-id="hS5CfP8n_js"
+                    style={{}}
+                >
+                    <iframe
+                        width="550"
+                        height="315"
+                        src="https://www.youtube.com/embed/hS5CfP8n_js"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="autoplay;"
+                        allowFullScreen
+                        resetonend="true"
+                    ></iframe>
                 </div>
+            </div>
 
-                <div className="pt-14 ">
-                    {isEnded ? (
-                        <button
-                            className={clsx(
-                                "bg-orange-600 tex text-white w-[250px] py-2.5 rounded-3xl mx-auto block transition cursor-pointer"
-                            )}
-                            onClick={handleVideoEnded}
-                        >
-                            কুইজ শুরু করুন
-                        </button>
-                    ) : (
-                        <button
-                            className={clsx(
-                                "bg-orange-600 tex text-white w-[250px] py-2.5 rounded-3xl mx-auto block transition opacity-50"
-                            )}
-                            disabled={true}
-                            onClick={() => console.log("disabled btn")}
-                        >
-                            কুইজ শুরু করুন
-                        </button>
-                    )}
-                </div>
-            </CenterWrapper>
-        </div>
+            <div className="pt-14 ">
+                {isEnded ? (
+                    <button
+                        className={clsx(
+                            "bg-orange-600 tex text-white w-[250px] py-2.5 rounded-3xl mx-auto block transition cursor-pointer"
+                        )}
+                        onClick={handleVideoEnded}
+                    >
+                        কুইজ শুরু করুন
+                    </button>
+                ) : (
+                    <button
+                        className={clsx(
+                            "bg-orange-600 tex text-white w-[250px] py-2.5 rounded-3xl mx-auto block transition opacity-50"
+                        )}
+                        disabled={true}
+                        onClick={() => console.log("disabled btn")}
+                    >
+                        কুইজ শুরু করুন
+                    </button>
+                )}
+            </div>
+        </CenterWrapper>
     );
 };
 

@@ -47,11 +47,10 @@ const QuizWrapper = ({ Quizes }) => {
 
     // handler function
     const handleCheckAnswer = (ansIndex) => {
-        console.log(quizIndex);
-        if (quizIndex + 1 >= Quizes.length) {
-            setQuizIndex(quizIndex + 1);
-            // router.push(`/certificate/${uidString}`);
-        } else if (Quizes[quizIndex].answers[ansIndex].isCorrect === true) {
+        if (
+            Quizes[quizIndex].answers[ansIndex].isCorrect === true ||
+            quizIndex >= Quizes.length
+        ) {
             setCorrectAnsIndex(ansIndex);
             setWrongAnsIndex(null);
             setIsHint(false);
@@ -88,12 +87,12 @@ const QuizWrapper = ({ Quizes }) => {
                         </div>
                     </article>
 
-                    <section className="flex flex-wrap justify-between">
+                    <section className="lg:flex lg:justify-between lg:flex-wrap">
                         {Quizes[quizIndex].answers.map((item, index) => {
                             return (
                                 <button
                                     className={clsx(
-                                        " p-4 rounded-md mb-8  border w-[48%] cursor-pointer text-left font-semibold",
+                                        " p-4 my-2 text-center lg:text-left rounded-md lg:mb-8  border lg:w-[48%] cursor-pointer font-semibold w-full",
                                         index !== wrongAnsIndex &&
                                             "border-neutral-300 bg-white",
                                         index === wrongAnsIndex &&

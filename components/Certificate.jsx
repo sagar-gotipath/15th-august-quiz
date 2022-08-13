@@ -120,68 +120,59 @@ const Certificate = ({ handleSaveData }) => {
                     <p>অভিনন্দন</p>
                     <h2 className="text-xl">আপনার সার্টিফিকেট</h2>
                 </article>
-                <div className="p-4 lg:p-0">
-                    <div
-                        className="lg:h-[460px] max-w-[646px] mx-auto"
-                        ref={renderNode}
-                    >
-                        <div id="image" ref={imageNode} className="relative">
-                            <img
-                                src="/assets/images/certificate_blank.png"
-                                alt="certificate"
-                                className="max-w-[646px] max-h-[460px] h-auto object-cover mx-auto lg:mb-8 mb-4 w-full block"
-                                onLoad={() => setIsLoadedCertificate(true)}
-                            />
-                            <span className="absolute z-50 text-lg italic font-bold uppercase -translate-x-1/2 -translate-y-2 font left-1/2 top-1/2">
-                                {userInfoForStore?.name || "Mohammed Sagar"}
-                            </span>
-                            <img
-                                src={
-                                    userInfoForStore.userPhoto ||
-                                    "/assets/images/avatar-cropped.svg"
-                                }
-                                alt="quiz participant"
-                                className="absolute w-[120px] h-[120px] object-cover rounded-full top-14 left-16"
-                                width="120"
-                                height="120"
-                                onLoad={() => setUserPhotoLoad(true)}
-                            />
-                        </div>
+                <div
+                    className="lg:h-[460px] max-w-[646px] mx-auto"
+                    ref={renderNode}
+                >
+                    <div id="image" ref={imageNode} className="relative">
+                        <img
+                            src="/assets/images/certificate_blank.png"
+                            alt="certificate"
+                            className="max-w-[646px] max-h-[460px] h-auto object-cover mx-auto lg:mb-8 mb-4 w-full block"
+                            onLoad={() => setIsLoadedCertificate(true)}
+                        />
+                        <span className="absolute z-50 text-lg italic font-bold uppercase -translate-x-1/2 -translate-y-2 font left-1/2 top-1/2">
+                            {userInfoForStore?.name || "Mohammed Sagar"}
+                        </span>
+                        <img
+                            src={
+                                userInfoForStore.userPhoto ||
+                                "/assets/images/avatar-cropped.svg"
+                            }
+                            alt="quiz participant"
+                            className="absolute w-[120px] h-[120px] object-cover rounded-full top-14 left-16"
+                            width="120"
+                            height="120"
+                            onLoad={() => setUserPhotoLoad(true)}
+                        />
                     </div>
                 </div>
 
-                <div className="flex flex-col mt-0 space-y-3 lg:space-y-0 lg:mt-8 lg:space-x-6 lg:justify-center lg:flex-row">
-                    <>
-                        <div>
-                            <Button className="flex items-center justify-center bg-orange-600">
-                                <a href={certificateData} download={imageName}>
-                                    ডাউনলোড করুন
-                                </a>
+                <div className="flex flex-col items-center mt-0 space-y-3 lg:justify-center lg:space-x-6 lg:space-y-0 lg:mt-8 lg:flex-row">
+                    <div className="">
+                        <Button className="flex items-center justify-center bg-orange-600">
+                            <a href={certificateData} download={imageName}>
+                                ডাউনলোড করুন
+                            </a>
+                            <img
+                                src="/assets/images/download_icon.svg"
+                                alt="download icon"
+                                className="inline-block w-4 ml-1.5"
+                            />
+                        </Button>
+                    </div>
+                    <div className="relative ">
+                        <SharePage pageUrl={shareUrl}>
+                            <span className="flex items-center justify-center bg-blue-800 text-center text-white w-[250px] py-2.5 rounded-3xl mx-auto  transition ">
+                                শেয়ার করুন
                                 <img
-                                    src="/assets/images/download_icon.svg"
-                                    alt="download icon"
+                                    src="/assets/images/share_icon.svg"
+                                    alt="share icon"
                                     className="w-4 inline-block ml-1.5"
                                 />
-                            </Button>
-                        </div>
-                        <div className="relative">
-                            <SharePage pageUrl={shareUrl}>
-                                <span className="flex items-center justify-center bg-blue-800 text-center text-white w-[250px] py-2.5 rounded-3xl mx-auto  transition ">
-                                    শেয়ার করুন
-                                    <img
-                                        src="/assets/images/share_icon.svg"
-                                        alt="share icon"
-                                        className="w-4 inline-block ml-1.5"
-                                    />
-                                </span>
-                            </SharePage>
-                            {/* <div className={clsx('absolute inset-0  bg-gray-100 opacity-40')}></div> */}
-                        </div>
-                    </>
-
-                    {/* <Link to="/">
-                        <Button>অংশগ্রহণ করুন</Button>
-                    </Link> */}
+                            </span>
+                        </SharePage>
+                    </div>
                 </div>
             </CenterWrapper>
         </>
