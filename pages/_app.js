@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
                     site_name: "15th august quiz",
                 }}
             /> */}
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
         </>
     );
 }

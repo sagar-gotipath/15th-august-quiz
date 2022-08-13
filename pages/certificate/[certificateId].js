@@ -12,8 +12,6 @@ import Spinner from "../../components/Spinner";
 const CertificatePage = ({ userData }) => {
     const router = useRouter();
 
-    console.log(userData);
-
     if (router.isFallback) {
         return (
             <div className="fixed inset-0 flex items-center justify-center bg-black/50">
@@ -102,40 +100,36 @@ const CertificatePage = ({ userData }) => {
 export default CertificatePage;
 
 export async function getStaticProps({ params }) {
-    if (params.certificateId === "sagar") {
+    console.log(params);
+    if (!params.certificateId) {
         return {
             props: {
                 userData: null,
             },
+            notFound: true,
         };
     }
-
-    try {
-        const docRef = doc(db, "users", params.certificateId);
-
-        const docSnap = await getDoc(docRef);
-
-        console.log(docSnap);
-        if (docSnap.exists()) {
-            return {
-                props: {
-                    userData: docSnap.data(),
-                },
-            };
-        }
-    } catch (error) {
-        console.log(error);
+    const docRef = doc(db, "users", params.certificateId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        console.log(docSnap.data());
         return {
             props: {
-                userData: null,
+                userData: docSnap.data(),
             },
         };
     }
+    return {
+        props: {
+            userData: null,
+        },
+        notFound: true,
+    };
 }
 
 export function getStaticPaths() {
     return {
-        paths: [{ params: { certificateId: "sagar" } }],
+        paths: [],
         fallback: true,
     };
 }

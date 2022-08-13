@@ -37,7 +37,9 @@ const QuizWrapper = ({ Quizes }) => {
     const [isDataSaved, setIsDataSaved] = useState(false);
 
     // custom document id
-    const uidString = uid(32);
+    // const uidString = uid(16);
+
+    // console.log(uidString);
 
     const handleSaveData = () => {
         setIsDataSaved(true);
@@ -128,10 +130,7 @@ const QuizWrapper = ({ Quizes }) => {
                 </div>
             ) : (
                 <div className="relative">
-                    <Certificate
-                        certificatePath={uidString}
-                        handleSaveData={handleSaveData}
-                    />
+                    <Certificate handleSaveData={handleSaveData} />
                     {!isDataSaved && (
                         <div className="fixed inset-0 flex items-center justify-center space-x-2 bg-black/50">
                             <Spinner />

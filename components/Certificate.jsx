@@ -12,7 +12,9 @@ import { AppContext } from "../pages";
 import { useRouter } from "next/router";
 import { appBaseUrl } from "../lib/config";
 
-const Certificate = ({ certificatePath, handleSaveData }) => {
+const usersRef = collection(db, "users");
+
+const Certificate = ({ handleSaveData }) => {
     const router = useRouter();
     const imageNode = useRef();
     const renderNode = useRef();
@@ -22,8 +24,9 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
     const [certificateData, setCertficateData] = useState(null);
     const [isLoadedCertificate, setIsLoadedCertificate] = useState(false);
     const [isUserPhotoLoad, setUserPhotoLoad] = useState(false);
-
     const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+
+    const [certificatePath, setCertificatePath] = useState(null);
 
     const shareUrl =
         appBaseUrl +
@@ -62,13 +65,13 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
             try {
                 setIsUserInfoSaved(false);
                 setIsError(false);
-                const usersRef = collection(db, "users");
 
                 const userDoc = await setDoc(doc(usersRef, certificatePath), {
                     name: userData.name,
                     phoneNumber: userData.phoneNumber,
                     imageUrl: uploadedImageUrl,
-                    uid: certificatePath,
+                    id: certificatePath,
+                    customId: certificatePath,
                 });
 
                 setIsUserInfoSaved(true);
@@ -84,6 +87,12 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
             saveInDb(userInfoForStore);
         }
     }, [uploadedImageUrl]);
+
+    useEffect(() => {
+        if (certificatePath === null) {
+            setCertificatePath(uid(32));
+        }
+    });
 
     return (
         <>
