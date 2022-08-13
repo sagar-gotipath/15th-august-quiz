@@ -33,18 +33,17 @@ const CertificatePage = ({ userData }) => {
             <>
                 <NextSeo
                     title="15th august quiz"
-                    description="A quiz about father of nation Sheikh Mujibur Rahman life and Bangladesh history. Organized by Gotipath and Deepto TV"
-                    canonical="15th August Quiz"
+                    description="A quiz about father of nation Sheikh Mujibur Rahman life and Bangladesh history organized by Gotipath and Deepto TV"
+                    canonical="https://www.canonical.ie/"
                     openGraph={{
-                        url: "https://15th-august-quiz.vercel.app/",
-                        title: "15th August Quiz",
-                        description:
-                            "A quiz event about father of nation Sheikh Mujibur Rahman life and Bangladesh history. Organized by Gotipath and Deepto TV",
+                        url: "https://www.url.ie/a",
+                        title: "Open Graph Title",
+                        description: "Open Graph Description",
                         images: [
                             {
                                 url: userData?.imageUrl,
-                                width: 1200,
-                                height: 627,
+                                width: 646,
+                                height: 460,
                                 alt: "Og Image Alt",
                                 type: "image/jpeg",
                             },
@@ -56,22 +55,6 @@ const CertificatePage = ({ userData }) => {
                         site: "@site",
                         cardType: "summary_large_image",
                     }}
-                    additionalMetaTags={[
-                        {
-                            property: "og:description",
-                            content:
-                                "One of top performer who participate in the quiz.",
-                        },
-                        {
-                            property: "og:image",
-                            content:
-                                "https://gotipath.com/wp-content/uploads/2021/04/gotipath-og.png",
-                        },
-                        {
-                            property: "og:title",
-                            content: "15th august quiz",
-                        },
-                    ]}
                 ></NextSeo>
                 {/* <NextSeo
                     additionalMetaTags={[
@@ -97,19 +80,16 @@ const CertificatePage = ({ userData }) => {
                         alt="mujib logo"
                         className="block w-24 mx-auto mb-8"
                     />
-                    <div className="">
+                    <div>
                         <img
                             src={userData?.imageUrl}
                             className="max-w-[646px] max-h-[460px] h-auto object-cover mx-auto block mb-10"
                         />
-
-                        <div className="flex justify-center">
-                            <Link href="/">
-                                <a>
-                                    <Button>অংশগ্রহণ করুন</Button>
-                                </a>
-                            </Link>
-                        </div>
+                        <Link href="/">
+                            <a>
+                                <Button>অংশগ্রহণ করুন</Button>
+                            </a>
+                        </Link>
                     </div>
                 </CenterWrapper>
             </>
@@ -132,7 +112,6 @@ export async function getStaticProps({ params }) {
     const docRef = doc(db, "users", params.certificateId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        console.log(docSnap.data());
         return {
             props: {
                 userData: docSnap.data(),
