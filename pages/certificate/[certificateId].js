@@ -22,6 +22,14 @@ const CertificatePage = ({ userData }) => {
         );
     }
 
+    if (userData === null) {
+        return (
+            <h1 className="py-10 font-semibold text-center">
+                Something went wrong in server. Please try again later.
+            </h1>
+        );
+    }
+
     return (
         <>
             <NextSeo
@@ -92,6 +100,14 @@ const CertificatePage = ({ userData }) => {
 export default CertificatePage;
 
 export async function getStaticProps({ params }) {
+    if (params.certificateId === "testingcertificateid") {
+        return {
+            props: {
+                userData: null,
+            },
+        };
+    }
+
     try {
         const userRef = collection(db, "users");
 
@@ -124,7 +140,7 @@ export async function getStaticProps({ params }) {
 
 export function getStaticPaths() {
     return {
-        paths: [{ params: { certificateId: "sagar" } }],
+        paths: [{ params: { certificateId: "testingcertificateid" } }],
         fallback: true,
     };
 }
