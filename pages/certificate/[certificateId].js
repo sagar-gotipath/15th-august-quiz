@@ -33,18 +33,18 @@ const CertificatePage = ({ userData }) => {
             <>
                 <NextSeo
                     title="15th august quiz"
-                    description="A quiz about father of nation Sheikh Mujibur Rahman life and Bangladesh history organized by Gotipath and Deepto TV"
+                    description="A quiz event about father of nation Sheikh Mujibur Rahman and his contribution to Bangladesh. Organized by Gotipath and Deepto TV"
                     canonical="https://www.canonical.ie/"
                     openGraph={{
                         url: "https://www.url.ie/a",
-                        title: "Open Graph Title",
+                        title: "15th August Quize",
                         description: "Open Graph Description",
                         images: [
                             {
                                 url: userData?.imageUrl,
                                 width: 646,
                                 height: 460,
-                                alt: "Og Image Alt",
+                                alt: "Quiz Certificate",
                                 type: "image/jpeg",
                             },
                         ],

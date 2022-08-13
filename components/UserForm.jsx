@@ -49,7 +49,7 @@ const UserForm = () => {
                 className="mx-auto"
             />
             <form
-                className="max-w-lg px-12 py-10 mx-auto bg-white rounded-lg"
+                className="max-w-lg px-10 py-10 mx-auto bg-white rounded-lg"
                 onSubmit={handleSubmit}
             >
                 <h2 className="mb-12 text-3xl text-center">

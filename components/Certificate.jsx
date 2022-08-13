@@ -150,34 +150,32 @@ const Certificate = ({ handleSaveData }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-col mt-0 space-y-3 lg:space-y-0 lg:mt-8 lg:space-x-6 lg:justify-center lg:flex-row">
-                    <>
-                        <div>
-                            <Button className="flex items-center justify-center bg-orange-600">
-                                <a href={certificateData} download={imageName}>
-                                    ডাউনলোড করুন
-                                </a>
+                <div className="flex flex-col items-center mt-0 space-y-3 lg:justify-center lg:space-y-0 lg:mt-8 lg:space-x-6 lg:flex-row">
+                    <div>
+                        <Button className="flex items-center justify-center bg-orange-600">
+                            <a href={certificateData} download={imageName}>
+                                ডাউনলোড করুন
+                            </a>
+                            <img
+                                src="/assets/images/download_icon.svg"
+                                alt="download icon"
+                                className="w-4 inline-block ml-1.5"
+                            />
+                        </Button>
+                    </div>
+                    <div className="relative">
+                        <SharePage pageUrl={shareUrl}>
+                            <span className="flex items-center justify-center bg-blue-800 text-center text-white w-[250px] py-2.5 rounded-3xl mx-auto  transition ">
+                                শেয়ার করুন
                                 <img
-                                    src="/assets/images/download_icon.svg"
-                                    alt="download icon"
+                                    src="/assets/images/share_icon.svg"
+                                    alt="share icon"
                                     className="w-4 inline-block ml-1.5"
                                 />
-                            </Button>
-                        </div>
-                        <div className="relative">
-                            <SharePage pageUrl={shareUrl}>
-                                <span className="flex items-center justify-center bg-blue-800 text-center text-white w-[250px] py-2.5 rounded-3xl mx-auto  transition ">
-                                    শেয়ার করুন
-                                    <img
-                                        src="/assets/images/share_icon.svg"
-                                        alt="share icon"
-                                        className="w-4 inline-block ml-1.5"
-                                    />
-                                </span>
-                            </SharePage>
-                            {/* <div className={clsx('absolute inset-0  bg-gray-100 opacity-40')}></div> */}
-                        </div>
-                    </>
+                            </span>
+                        </SharePage>
+                        {/* <div className={clsx('absolute inset-0  bg-gray-100 opacity-40')}></div> */}
+                    </div>
 
                     {/* <Link to="/">
                         <Button>অংশগ্রহণ করুন</Button>
