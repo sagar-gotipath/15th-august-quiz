@@ -8,6 +8,7 @@ import CenterWrapper from "./CenterWrapper";
 import Certificate from "./Certificate";
 import { AppContext } from "../pages";
 import { useRouter } from "next/router";
+import Spinner from "./Spinner";
 
 const banglaNumericValue = [
     "১",
@@ -28,25 +29,37 @@ const banglaNumericValue = [
 
 const QuizWrapper = ({ Quizes }) => {
     const router = useRouter();
-    const { setUserInfoToStore } = useContext(AppContext);
+    const [isCheckingAnswer, setIsChecking] = useState(false);
     const [quizIndex, setQuizIndex] = useState(0);
     const [correctAnsIndex, setCorrectAnsIndex] = useState(null);
     const [wrongAnsIndex, setWrongAnsIndex] = useState(null);
     const [isHint, setIsHint] = useState(false);
+    const [isDataSaved, setIsDataSaved] = useState(false);
 
+    // custom document id
     const uidString = uid(32);
+
+    const handleSaveData = () => {
+        setIsDataSaved(true);
+    };
 
     // handler function
     const handleCheckAnswer = (ansIndex) => {
-        if (Quizes[quizIndex].answers[ansIndex].isCorrect === true) {
+        console.log(quizIndex);
+        if (quizIndex + 1 >= Quizes.length) {
+            setQuizIndex(quizIndex + 1);
+            // router.push(`/certificate/${uidString}`);
+        } else if (Quizes[quizIndex].answers[ansIndex].isCorrect === true) {
             setCorrectAnsIndex(ansIndex);
             setWrongAnsIndex(null);
             setIsHint(false);
             const audio = new Audio("/assets/audio/right_sound.mp3");
             audio.play();
+            setIsChecking(true);
             setTimeout(() => {
                 setQuizIndex(quizIndex + 1);
                 setCorrectAnsIndex(null);
+                setIsChecking(false);
             }, 1000);
         } else {
             setWrongAnsIndex(ansIndex);
@@ -57,8 +70,8 @@ const QuizWrapper = ({ Quizes }) => {
     };
     return (
         <CenterWrapper>
-            {quizIndex < Quizes.length && (
-                <>
+            {quizIndex < Quizes.length ? (
+                <div>
                     <img
                         src="/assets/images/mujib.png"
                         alt="mujib logo"
@@ -88,6 +101,7 @@ const QuizWrapper = ({ Quizes }) => {
                                     )}
                                     key={index}
                                     onClick={() => handleCheckAnswer(index)}
+                                    disabled={isCheckingAnswer}
                                 >
                                     {item.text}
                                 </button>
@@ -111,12 +125,23 @@ const QuizWrapper = ({ Quizes }) => {
                             {Quizes[quizIndex].hint}
                         </div>
                     )}
-                </>
+                </div>
+            ) : (
+                <div className="relative">
+                    <Certificate
+                        certificatePath={uidString}
+                        handleSaveData={handleSaveData}
+                    />
+                    {!isDataSaved && (
+                        <div className="fixed inset-0 flex items-center justify-center space-x-2 bg-black/50">
+                            <Spinner />
+                            <span className="text-white">
+                                Processing your certificate...
+                            </span>
+                        </div>
+                    )}
+                </div>
             )}
-
-            {quizIndex >= Quizes.length &&
-                // <Navigate to={`/certificate/${uidString}`} state="/" />
-                router.push(`/certificate/${uidString}`)}
         </CenterWrapper>
     );
 };
