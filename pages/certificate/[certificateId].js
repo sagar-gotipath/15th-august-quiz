@@ -56,6 +56,22 @@ const CertificatePage = ({ userData }) => {
                         site: "@site",
                         cardType: "summary_large_image",
                     }}
+                    additionalMetaTags={[
+                        {
+                            property: "og:description",
+                            content:
+                                "One of top performer who participate in the quiz.",
+                        },
+                        {
+                            property: "og:image",
+                            content:
+                                "https://gotipath.com/wp-content/uploads/2021/04/gotipath-og.png",
+                        },
+                        {
+                            property: "og:title",
+                            content: "15th august quiz",
+                        },
+                    ]}
                 ></NextSeo>
                 {/* <NextSeo
                     additionalMetaTags={[
