@@ -10,7 +10,7 @@ const Button = ({
     return (
         <button
             className={clsx(
-                "text-center text-white w-[250px] py-2.5 rounded-3xl  block transition ",
+                "text-center text-white w-[250px] py-2.5 rounded-3xl block transition ",
                 className
             )}
             onClick={onClick}

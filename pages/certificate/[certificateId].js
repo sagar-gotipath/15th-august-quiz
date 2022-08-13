@@ -34,7 +34,7 @@ const CertificatePage = ({ userData }) => {
                 <NextSeo
                     title="15th august quiz"
                     description="A quiz about father of nation Sheikh Mujibur Rahman life and Bangladesh history. Organized by Gotipath and Deepto TV"
-                    canonical="https://15th-august-quiz.vercel.app/"
+                    canonical="15th August Quiz"
                     openGraph={{
                         url: "https://15th-august-quiz.vercel.app/",
                         title: "15th August Quiz",
@@ -44,7 +44,7 @@ const CertificatePage = ({ userData }) => {
                             {
                                 url: userData?.imageUrl,
                                 width: 1200,
-                                height: 630,
+                                height: 627,
                                 alt: "Og Image Alt",
                                 type: "image/jpeg",
                             },
@@ -81,16 +81,19 @@ const CertificatePage = ({ userData }) => {
                         alt="mujib logo"
                         className="block w-24 mx-auto mb-8"
                     />
-                    <div>
+                    <div className="">
                         <img
                             src={userData?.imageUrl}
                             className="max-w-[646px] max-h-[460px] h-auto object-cover mx-auto block mb-10"
                         />
-                        <Link href="/">
-                            <a>
-                                <Button>অংশগ্রহণ করুন</Button>
-                            </a>
-                        </Link>
+
+                        <div className="flex justify-center">
+                            <Link href="/">
+                                <a>
+                                    <Button>অংশগ্রহণ করুন</Button>
+                                </a>
+                            </Link>
+                        </div>
                     </div>
                 </CenterWrapper>
             </>
