@@ -1,6 +1,6 @@
 import { uid } from "uid";
 import domtoimage from "dom-to-image";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import React, { useState, useContext, useRef, useEffect } from "react";
 
 import { db, storageRef } from "../firebase.config";
@@ -25,7 +25,11 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
 
     const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
-    const shareUrl = appBaseUrl + "/certificate/" + certificatePath;
+    const shareUrl =
+        appBaseUrl +
+        (appBaseUrl.endsWith("/") == true ? "" : "/") +
+        "certificate/" +
+        certificatePath;
 
     const imageName =
         userInfoForStore.name + "_certificate_" + Date.now() + ".png";
@@ -38,7 +42,6 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
                 .toPng(imageNode.current)
                 .then((dataUrl) => {
                     setCertficateData(dataUrl);
-
                     uploadString(imageRef, dataUrl, "data_url").then(
                         (snapshot) => {
                             getDownloadURL(imageRef).then((url) => {
@@ -59,7 +62,9 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
             try {
                 setIsUserInfoSaved(false);
                 setIsError(false);
-                const docRef = await addDoc(collection(db, "users"), {
+                const usersRef = collection(db, "users");
+
+                const userDoc = await setDoc(doc(usersRef, certificatePath), {
                     name: userData.name,
                     phoneNumber: userData.phoneNumber,
                     imageUrl: uploadedImageUrl,
