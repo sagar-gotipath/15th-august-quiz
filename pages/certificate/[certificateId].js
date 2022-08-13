@@ -37,7 +37,7 @@ const CertificatePage = ({ userData }) => {
                     canonical="https://www.canonical.ie/"
                     openGraph={{
                         url: "https://www.url.ie/a",
-                        title: "15th August Quiz",
+                        title: "15th August Quiz Event",
                         description:
                             "A quiz event about father of nation Sheikh Mujibur Rahman and his contribution to Bangladesh. Organized by Gotipath and Deepto TV",
                         images: [
