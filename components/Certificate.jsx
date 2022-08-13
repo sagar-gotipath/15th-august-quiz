@@ -28,7 +28,7 @@ const Certificate = ({ certificatePath, handleSaveData }) => {
     const shareUrl = appBaseUrl + "/certificate/" + certificatePath;
 
     const imageName =
-        userInfoForStore.name || +"_certificate_" + Date.now() + ".png";
+        userInfoForStore.name + "_certificate_" + Date.now() + ".png";
     const imageRef = ref(storageRef, imageName);
 
     // generate image
