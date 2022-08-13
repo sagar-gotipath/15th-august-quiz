@@ -33,17 +33,18 @@ const CertificatePage = ({ userData }) => {
             <>
                 <NextSeo
                     title="15th august quiz"
-                    description="A quiz about father of nation Sheikh Mujibur Rahman life and Bangladesh history organized by Gotipath and Deepto TV"
-                    canonical="https://www.canonical.ie/"
+                    description="A quiz about father of nation Sheikh Mujibur Rahman life and Bangladesh history. Organized by Gotipath and Deepto TV"
+                    canonical="https://15th-august-quiz.vercel.app/"
                     openGraph={{
-                        url: "https://www.url.ie/a",
-                        title: "Open Graph Title",
-                        description: "Open Graph Description",
+                        url: "https://15th-august-quiz.vercel.app/",
+                        title: "15th August Quiz",
+                        description:
+                            "A quiz event about father of nation Sheikh Mujibur Rahman life and Bangladesh history. Organized by Gotipath and Deepto TV",
                         images: [
                             {
                                 url: userData?.imageUrl,
-                                width: 646,
-                                height: 460,
+                                width: 1200,
+                                height: 630,
                                 alt: "Og Image Alt",
                                 type: "image/jpeg",
                             },
