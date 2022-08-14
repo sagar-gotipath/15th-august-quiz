@@ -32,24 +32,24 @@ const CertificatePage = ({ userData }) => {
         return (
             <>
                 <NextSeo
-                    title="15th august quiz"
-                    description="A quiz event about father of nation Sheikh Mujibur Rahman and his contribution to Bangladesh. Organized by Gotipath and Deepto TV"
+                    title="আসুন জানি - ১৫ই আগস্ট"
+                    description="বঙ্গবন্ধু সম্পর্কে জানতে ও জানাতে ভিজিট করুন"
                     canonical="https://www.canonical.ie/"
                     openGraph={{
                         url: "https://www.url.ie/a",
-                        title: "15th August Quiz Event",
+                        title: "আসুন জানি - ১৫ই আগস্ট",
                         description:
-                            "A quiz event about father of nation Sheikh Mujibur Rahman and his contribution to Bangladesh. Organized by Gotipath and Deepto TV",
+                            "বঙ্গবন্ধু সম্পর্কে জানতে ও জানাতে ভিজিট করুন",
                         images: [
                             {
                                 url: userData?.imageUrl,
                                 width: 1200,
                                 height: 627,
-                                alt: "Quiz Certificate",
+                                alt: "banner",
                                 type: "image/jpeg",
                             },
                         ],
-                        site_name: "15th august quiz",
+                        site_name: "আসুন জানি - ১৫ই আগস্ট",
                     }}
                     twitter={{
                         handle: "@handle",
@@ -57,24 +57,7 @@ const CertificatePage = ({ userData }) => {
                         cardType: "summary_large_image",
                     }}
                 ></NextSeo>
-                {/* <NextSeo
-                    additionalMetaTags={[
-                        {
-                            property: "og:description",
-                            content:
-                                "One of top performer who participate in the quiz.",
-                        },
-                        {
-                            property: "og:image",
-                            content:
-                                "https://gotipath.com/wp-content/uploads/2021/04/gotipath-og.png",
-                        },
-                        {
-                            property: "og:title",
-                            content: "15th august quiz",
-                        },
-                    ]}
-                ></NextSeo> */}
+
                 <CenterWrapper>
                     <img
                         src="/assets/images/mujib.png"
@@ -103,7 +86,6 @@ const CertificatePage = ({ userData }) => {
 export default CertificatePage;
 
 export async function getStaticProps({ params }) {
-    console.log(params);
     if (!params.certificateId) {
         return {
             props: {

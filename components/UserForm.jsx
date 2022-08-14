@@ -46,14 +46,14 @@ const UserForm = () => {
             <img
                 src="/assets/images/mujib.png"
                 alt="15 august"
-                className="mx-auto"
+                className="w-40 mx-auto mb-5"
             />
             <form
                 className="max-w-lg px-10 py-10 mx-auto bg-white rounded-lg"
                 onSubmit={handleSubmit}
             >
                 <h2 className="mb-12 text-3xl text-center">
-                    কুইজে অংশগ্রহণ করতে আপনার নাম এবং ফোন নাম্বার দিন
+                    অংশগ্রহণ করতে আপনার নাম এবং ফোন নাম্বার দিন
                 </h2>
                 <div className="relative mb-5">
                     <input
@@ -114,27 +114,30 @@ const UserForm = () => {
                             className="object-cover w-16 h-16 rounded-full"
                             src={
                                 userInfo.userPhoto ||
-                                "/assets/images/avatar.svg"
+                                "/assets/images/avatar.png"
                             }
                             alt={userInfo.name}
                         />
                     </div>
-                    <label className="block">
+                    <div className="block">
                         <span className="sr-only">Choose profile photo</span>
+                        <label htmlFor="userPhoto"></label>
                         <input
                             type="file"
                             name="userPhoto"
                             onChange={handleChange}
-                            className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 "
+                            id="userPhoto"
+                            className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 "
                         />
-                    </label>
+                    </div>
                 </div>
                 <div className="flex justify-center">
                     <Button type="submit">অংশগ্রহণ করুন</Button>
                 </div>
             </form>
 
-            <div className="flex items-center justify-center my-10 space-x-10">
+            <p className="pt-10 pb-2 text-2xl text-center">আয়োজনেঃ</p>
+            <div className="flex items-center justify-center space-x-10">
                 <div>
                     <img
                         src="/assets/images/deepto_logo.png"

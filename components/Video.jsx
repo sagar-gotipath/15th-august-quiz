@@ -5,11 +5,14 @@ import clsx from "clsx";
 import CenterWrapper from "./CenterWrapper";
 import { useContext } from "react";
 import { AppContext } from "../pages";
+import Hls from "hls.js";
 
 const Video = ({ src }) => {
     const { setComponentIndex } = useContext(AppContext);
     const videoPlayerRef = useRef();
     const [isEnded, setIsEnded] = useState(false);
+    const videoSource =
+        "https://toffee-spa.gotipath.com/deeptotv-live/transcoded/2022/08/14/966336/1/3/1835/manifest.m3u8";
 
     const handleVideoEnded = () => {
         console.log("clicked");
@@ -18,6 +21,14 @@ const Video = ({ src }) => {
 
     useEffect(() => {
         const player = new Plyr(videoPlayerRef.current);
+        if (!Hls.isSupported()) {
+            videoPlayerRef.current.src = videoSource;
+        } else {
+            const hls = new Hls();
+            hls.loadSource(videoSource);
+            hls.attachMedia(videoPlayerRef.current);
+            window.hls = hls;
+        }
         player.on("ended", (e) => {
             setIsEnded(true);
         });
@@ -30,29 +41,20 @@ const Video = ({ src }) => {
                 className="block w-24 mx-auto mb-10"
             />
             <h2 className="mb-10 text-2xl text-center">
-                সম্পূর্ণ ভিডিওটি দেখে কুইজ শুরু করুন
+                পরবর্তী ধাপে যেতে সম্পূর্ণ ভিডিওটি দেখুন
             </h2>
             <div className="w-full max-w-2xl lg:w-[650px] rounded-md overflow-hidden mx-auto">
-                <div
+                <video
                     className="!rounded-lg plyr__video-embed"
                     id="player"
                     ref={videoPlayerRef}
-                    data-plyr-provider="youtube"
                     controls
-                    data-plyr-embed-id="hS5CfP8n_js"
-                    style={{}}
+                    crossOrigin=""
+                    playsInline
+                    autoPlay
                 >
-                    <iframe
-                        width="550"
-                        height="315"
-                        src="https://www.youtube.com/embed/hS5CfP8n_js"
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="autoplay;"
-                        allowFullScreen
-                        resetonend="true"
-                    ></iframe>
-                </div>
+                    <source src={videoSource} type="Video/m3u8" />
+                </video>
             </div>
 
             <div className="pt-14 ">
@@ -63,7 +65,7 @@ const Video = ({ src }) => {
                         )}
                         onClick={handleVideoEnded}
                     >
-                        কুইজ শুরু করুন
+                        পরবর্তী ধাপে যান
                     </button>
                 ) : (
                     <button
@@ -73,7 +75,7 @@ const Video = ({ src }) => {
                         disabled={true}
                         onClick={() => console.log("disabled btn")}
                     >
-                        কুইজ শুরু করুন
+                        পরবর্তী ধাপে যান
                     </button>
                 )}
             </div>
@@ -82,10 +84,3 @@ const Video = ({ src }) => {
 };
 
 export default Video;
-
-// <ReactPlayer
-//                 className="react-player"
-//                 url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-//                 width="100%"
-//                 height="100%"
-//             />

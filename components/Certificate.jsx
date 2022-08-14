@@ -34,8 +34,7 @@ const Certificate = ({ handleSaveData }) => {
         "certificate/" +
         certificatePath;
 
-    const imageName =
-        userInfoForStore.name + "_certificate_" + Date.now() + ".png";
+    const imageName = userInfoForStore.name + "_banner_" + Date.now() + ".png";
     const imageRef = ref(storageRef, imageName);
 
     // generate image
@@ -96,20 +95,6 @@ const Certificate = ({ handleSaveData }) => {
 
     return (
         <>
-            {/* <Helmet>
-                <meta charSet="utf-8" />
-                <title>My Title</title>
-                <link
-                    rel="canonical"
-                    href={process.env.REACT_APP_APP_BASE_URL}
-                />
-                <meta name="description" content="quiz" />
-                <meta property="og:title" content="15th august quiz." />
-                <meta property="og:image" content={uploadedImageUrl} />
-            </Helmet> */}
-
-            {/* main content */}
-
             <CenterWrapper>
                 <img
                     src="/assets/images/mujib.png"
@@ -117,51 +102,51 @@ const Certificate = ({ handleSaveData }) => {
                     className="block w-24 mx-auto mb-8"
                 />
                 <article className="mb-6 text-center">
-                    <p>অভিনন্দন</p>
-                    <h2 className="text-xl">আপনার সার্টিফিকেট</h2>
+                    <h2 className="text-lg">আপনাকে অভিনন্দন</h2>
                 </article>
-                <div className="mb-5 lg:p-0">
+                <div className="w-auto mx-auto max-w-2xl aspect-[1200/630] mb-5 lg:p-0">
                     <div
-                        className="lg:h-[460px] max-w-[646px] mx-auto"
-                        ref={renderNode}
+                        ref={imageNode}
+                        className="relative max-w-2xl aspect-[1200/630] h-auto"
                     >
-                        <div id="image" ref={imageNode} className="relative">
-                            <img
-                                src="/assets/images/certificate_blank.png"
-                                alt="certificate"
-                                className="max-w-[646px] max-h-[460px] h-auto object-cover mx-auto lg:mb-8 mb-4 w-full block"
-                                onLoad={() => setIsLoadedCertificate(true)}
-                            />
-                            <span className="absolute z-50 text-lg italic font-bold uppercase -translate-x-1/2 -translate-y-2 font left-1/2 top-1/2">
-                                {userInfoForStore?.name || "Mohammed Sagar"}
-                            </span>
-                            <img
-                                src={
-                                    userInfoForStore.userPhoto ||
-                                    "/assets/images/avatar-cropped.svg"
-                                }
-                                alt="quiz participant"
-                                className="absolute w-[120px] h-[120px] object-cover rounded-full lg:top-14 top-4 lg:left-16 left-4"
-                                width="120"
-                                height="120"
-                                onLoad={() => setUserPhotoLoad(true)}
-                            />
+                        <img
+                            src="/assets/images/banner.jpg"
+                            alt="certificate"
+                            className="block object-cover w-full h-full mx-auto mb-4 lg:mb-8"
+                            onLoad={() => setIsLoadedCertificate(true)}
+                        />
+                        <div className="absolute flex items-center w-full space-x-2 md:space-x-4 bottom-3 left-4 lg:left-8">
+                            {userInfoForStore.userPhoto && (
+                                <img
+                                    src={userInfoForStore.userPhoto}
+                                    alt="quiz participant"
+                                    className="object-cover w-8 h-8 border border-white rounded-full md:border-2 md:w-14 md:h-14 lg:w-20 lg:h-20"
+                                    width="80"
+                                    height="80"
+                                    onLoad={() => setUserPhotoLoad(true)}
+                                />
+                            )}
+                            <h3 className="z-50 text-xs text-white uppercase md:font-semibold md:text-sm lg:text-lg whitespace-nowrap">
+                                {userInfoForStore?.name}
+                            </h3>
                         </div>
                     </div>
                 </div>
 
                 <div className="flex flex-col items-center mt-0 space-y-3 lg:justify-center lg:space-y-0 lg:mt-8 lg:space-x-6 lg:flex-row">
                     <div>
-                        <Button className="flex items-center justify-center bg-orange-600">
-                            <a href={certificateData} download={imageName}>
-                                ডাউনলোড করুন
-                            </a>
+                        <a
+                            href={certificateData}
+                            download={imageName}
+                            className="flex items-center justify-center px-8 bg-orange-600 rounded-full text-center text-white w-[250px] py-2.5  transition"
+                        >
+                            <span>ডাউনলোড করুন</span>
                             <img
                                 src="/assets/images/download_icon.svg"
                                 alt="download icon"
                                 className="w-4 inline-block ml-1.5"
                             />
-                        </Button>
+                        </a>
                     </div>
                     <div className="relative">
                         <SharePage pageUrl={shareUrl}>

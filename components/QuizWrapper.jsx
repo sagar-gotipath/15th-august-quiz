@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Spinner from "./Spinner";
 
 const banglaNumericValue = [
+    "০",
     "১",
     "২",
     "৩",
@@ -25,6 +26,7 @@ const banglaNumericValue = [
     "১২",
     "১৩",
     "১৪",
+    "১৫",
 ];
 
 const QuizWrapper = ({ Quizes }) => {
@@ -83,7 +85,8 @@ const QuizWrapper = ({ Quizes }) => {
                             {Quizes[quizIndex].question}
                         </h3>
                         <div className="absolute top-0 px-2 py-1 text-sm text-white -translate-x-1/2 -translate-y-1/2 bg-orange-600 w-36 rounded-2xl inset-x-1/2">
-                            প্রশ্ন {banglaNumericValue[quizIndex]}/১৩
+                            প্রশ্ন {banglaNumericValue[quizIndex + 1]}/
+                            {banglaNumericValue[Quizes.length]}
                         </div>
                     </article>
 
@@ -134,7 +137,7 @@ const QuizWrapper = ({ Quizes }) => {
                         <div className="fixed inset-0 flex items-center justify-center space-x-2 bg-black/50">
                             <Spinner />
                             <span className="text-white">
-                                Processing your certificate...
+                                আপনার ব্যানারটি তৈরি হচ্ছে...
                             </span>
                         </div>
                     )}
