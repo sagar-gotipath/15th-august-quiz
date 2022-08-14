@@ -46,13 +46,13 @@ const UserForm = () => {
             <img
                 src="/assets/images/mujib.png"
                 alt="15 august"
-                className="w-40 mx-auto mb-5"
+                className="w-40 mx-auto mb-2"
             />
             <form
-                className="max-w-lg px-10 py-10 mx-auto bg-white rounded-lg"
+                className="max-w-lg px-10 py-6 mx-auto bg-white rounded-lg"
                 onSubmit={handleSubmit}
             >
-                <h2 className="mb-12 text-3xl text-center">
+                <h2 className="mb-5 text-2xl text-center">
                     অংশগ্রহণ করতে আপনার নাম এবং ফোন নাম্বার দিন
                 </h2>
                 <div className="relative mb-5">
@@ -77,7 +77,7 @@ const UserForm = () => {
                         htmlFor="name"
                         className="absolute px-2 text-gray-400 transition-all bg-white left-7 -top-2.5 peer-placeholder-shown:top-3 peer-placeholder-shown:px-0-1 peer-placeholder-shown:bg-transparent text-sm peer-placeholder-shown:text-base cursor-text"
                     >
-                        নাম
+                        আপনার নাম
                     </label>
                 </div>
                 <div className="relative mb-5 ">
@@ -104,39 +104,41 @@ const UserForm = () => {
                         htmlFor="phoneNumber"
                         className="absolute px-2 text-gray-400 transition-all bg-white left-7 -top-2.5 peer-placeholder-shown:top-3 peer-placeholder-shown:px-0-1 peer-placeholder-shown:bg-transparent text-sm peer-placeholder-shown:text-base cursor-text"
                     >
-                        ফোন নাম্বার
+                        আপনার ফোন নাম্বার
                     </label>
                 </div>
-
-                <div className="flex items-center mb-8 space-x-6">
-                    <div className="shrink-0">
-                        <img
-                            className="object-cover w-16 h-16 rounded-full"
-                            src={
-                                userInfo.userPhoto ||
-                                "/assets/images/avatar.png"
-                            }
-                            alt={userInfo.name}
-                        />
+                <label>
+                    <div className="relative flex items-center px-8 pt-4 pb-2 mb-5 space-x-6 border rounded-xl border-neutral-400">
+                        <div className="shrink-0">
+                            <img
+                                className="object-cover w-12 h-12 rounded-full"
+                                src={
+                                    userInfo.userPhoto ||
+                                    "/assets/images/avatar.png"
+                                }
+                                alt={userInfo.name}
+                            />
+                        </div>
+                        <div className="block">
+                            <span className="absolute px-1 text-gray-400 bg-white -top-2 left-8">
+                                আপনার ছবি
+                            </span>
+                            <input
+                                type="file"
+                                name="userPhoto"
+                                onChange={handleChange}
+                                id="userPhoto"
+                                className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 "
+                            />
+                        </div>
                     </div>
-                    <div className="block">
-                        <span className="sr-only">Choose profile photo</span>
-                        <label htmlFor="userPhoto"></label>
-                        <input
-                            type="file"
-                            name="userPhoto"
-                            onChange={handleChange}
-                            id="userPhoto"
-                            className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 "
-                        />
-                    </div>
-                </div>
+                </label>
                 <div className="flex justify-center">
                     <Button type="submit">অংশগ্রহণ করুন</Button>
                 </div>
             </form>
 
-            <p className="pt-10 pb-2 text-2xl text-center">আয়োজনেঃ</p>
+            <p className="pt-8 pb-2 text-2xl text-center">আয়োজনেঃ</p>
             <div className="flex items-center justify-center space-x-10">
                 <div>
                     <img
