@@ -86,11 +86,13 @@ const CertificatePage = ({ userData }) => {
                             src={userData?.imageUrl}
                             className="max-w-[646px] max-h-[460px] h-auto object-cover mx-auto block mb-10"
                         />
-                        <Link href="/">
-                            <a>
-                                <Button>অংশগ্রহণ করুন</Button>
-                            </a>
-                        </Link>
+                        <div className="flex justify-center">
+                            <Link href="/">
+                                <a>
+                                    <Button>অংশগ্রহণ করুন</Button>
+                                </a>
+                            </Link>
+                        </div>
                     </div>
                 </CenterWrapper>
             </>

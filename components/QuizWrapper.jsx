@@ -83,7 +83,7 @@ const QuizWrapper = ({ Quizes }) => {
                             {Quizes[quizIndex].question}
                         </h3>
                         <div className="absolute top-0 px-2 py-1 text-sm text-white -translate-x-1/2 -translate-y-1/2 bg-orange-600 w-36 rounded-2xl inset-x-1/2">
-                            প্রশ্ন {banglaNumericValue[quizIndex]}/১৪
+                            প্রশ্ন {banglaNumericValue[quizIndex]}/১৩
                         </div>
                     </article>
 

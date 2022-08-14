@@ -120,7 +120,7 @@ const Certificate = ({ handleSaveData }) => {
                     <p>অভিনন্দন</p>
                     <h2 className="text-xl">আপনার সার্টিফিকেট</h2>
                 </article>
-                <div className="p-4 lg:p-0">
+                <div className="mb-5 lg:p-0">
                     <div
                         className="lg:h-[460px] max-w-[646px] mx-auto"
                         ref={renderNode}
@@ -141,7 +141,7 @@ const Certificate = ({ handleSaveData }) => {
                                     "/assets/images/avatar-cropped.svg"
                                 }
                                 alt="quiz participant"
-                                className="absolute w-[120px] h-[120px] object-cover rounded-full top-14 left-16"
+                                className="absolute w-[120px] h-[120px] object-cover rounded-full lg:top-14 top-4 lg:left-16 left-4"
                                 width="120"
                                 height="120"
                                 onLoad={() => setUserPhotoLoad(true)}

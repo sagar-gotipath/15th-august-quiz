@@ -64,10 +64,10 @@ const UserForm = () => {
                         onChange={handleChange}
                         placeholder="নাম"
                         required
-                        pattern="[A-Za-z\\w]+"
+                        pattern="[A-Za-z ]{1,255}"
                         onInvalid={(e) =>
                             e.target.setCustomValidity(
-                                "Enter your name without special charecter"
+                                "Enter your name without special character"
                             )
                         }
                         onInput={(e) => e.target.setCustomValidity("")}
