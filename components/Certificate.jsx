@@ -101,9 +101,6 @@ const Certificate = ({ handleSaveData }) => {
                     alt="mujib logo"
                     className="block w-24 mx-auto mb-8"
                 />
-                <article className="mb-6 text-center">
-                    <h2 className="text-lg">আপনাকে অভিনন্দন</h2>
-                </article>
                 <div className="w-auto mx-auto max-w-2xl aspect-[1200/630] mb-5 lg:p-0">
                     <div
                         ref={imageNode}
