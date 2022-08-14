@@ -143,14 +143,14 @@ const UserForm = () => {
 
       <p className="pt-8 pb-2 text-2xl text-center">আয়োজনেঃ</p>
       <div className="flex items-center justify-center space-x-10">
-        <a href="https://deepto.tv" target="_blank">
+        <a href="https://deepto.tv" target="_blank" rel="noreferrer">
           <img
             src="/assets/images/deepto_logo.png"
             alt="deepto TV logo"
             className="w-auto h-auto"
           />
         </a>
-        <a href="https://www.gotipath.com" target="_blank">
+        <a href="https://www.gotipath.com" target="_blank" rel="noreferrer">
           <img
             src="/assets/images/gotipath_logo.png"
             alt="deepto TV logo"
